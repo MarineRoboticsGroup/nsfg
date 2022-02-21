@@ -7,13 +7,13 @@ The following instruction was tested on Ubuntu 18.04 with conda.
 ```
 git clone git@github.com:MarineRoboticsGroup/nsfg.git
 cd nsfg
-conda create -n nsfg python=3.8
-conda activate nsfg
-pip install -r requirements.txt
+conda env create -f environment.yml
+conda activate nsfg_test
 python src/setup.py install
 ```
 
 ## Running an example
 ```
+cd example
 python dns_smc_nuts_batch.py
 ```
