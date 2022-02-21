@@ -9,7 +9,7 @@ git clone git@github.com:MarineRoboticsGroup/nsfg.git
 cd nsfg
 conda env create -f environment.yml
 conda activate nsfg_test
-python src/setup.py install
+python setup.py install
 ```
 
 ## Running an example
