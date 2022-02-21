@@ -251,13 +251,10 @@ def dynesty_run_batch(live_points, case_dir, data_file, data_format,
             file.write(" ".join(str(s) for s in step_list))
             file.close()
 
-            # plt.figure()
-            # plt.plot(step_list, step_timer, 'go-')
-            # plt.ylabel(f"Time (sec)")
-            #
-            # plt.savefig(f"{run_dir}/step_timing.png", bbox_inches="tight")
-            # plt.show()
-            # plt.close()
+            tmp_fig, tmp_ax = plt.subplots()
+            tmp_ax.plot(step_list, step_timer, 'go--')
+            tmp_ax.set_ylabel("Time (sec)")
+            tmp_fig.savefig(f"{run_dir}/step_timing.png", bbox_inches="tight")
 
             if mixture_factor2weights:
                 # write updated hypothesis weights
@@ -278,4 +275,3 @@ def dynesty_run_batch(live_points, case_dir, data_file, data_format,
                 plt.xlabel('Step')
                 plt.ylabel('Hypothesis weights')
                 plt.savefig(run_dir + f'/step{i}_hypoweights.png', dpi=300)
-                plt.show()
