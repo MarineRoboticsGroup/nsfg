@@ -8,7 +8,7 @@ The following instruction was tested on Ubuntu 18.04 with Conda.
 git clone git@github.com:MarineRoboticsGroup/nsfg.git
 cd nsfg
 conda env create -f environment.yml
-conda activate nsfg_test
+conda activate nsfg
 python setup.py install
 ```
 
