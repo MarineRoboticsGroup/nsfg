@@ -2,8 +2,6 @@ import numpy as np
 import TransportMaps.Distributions as dist
 from typing import Tuple, List, Dict
 
-import sklearn
-
 from slam.Variables import Variable
 from scipy.stats import circmean
 from geometry.TwoDimension import Rot2, Point2, SE2Pose
@@ -42,46 +40,6 @@ def mmd(samples1: np.ndarray, samples2: np.ndarray, k_sigma2: float = 1.0
 
     res = np.sqrt((E1 + E2 - 2.0 * E3) / gaussian.pdf(np.zeros(dim)))
     return res
-
-def MMDu2(X, Y, sigma):
-    m = X.shape[0]
-    n = Y.shape[0]
-
-    # Compute and return *squared* Euclidean distance matrices
-    XX = sklearn.metrics.pairwise_distances(X=X, Y=X, squared=True)
-    XY = sklearn.metrics.pairwise_distances(X=X, Y=Y, squared=True)
-    YY = sklearn.metrics.pairwise_distances(X=Y, Y=Y, squared=True)
-
-    # Compute kernel matrices KXX, KXY, KYY using RBF kernel with bandwidth sigma
-    KXX = np.exp(-XX / (2 * sigma ** 2))
-    KXY = np.exp(-XY / (2 * sigma ** 2))
-    KYY = np.exp(-YY / (2 * sigma ** 2))
-
-    # skip disgonal entries
-    np.fill_diagonal(KXX, .0)
-    np.fill_diagonal(KYY, .0)
-
-    # Compute and return the unbiased empirical MMD estimator MMDu defined in eq. (3) of "A Kernel Two-Sample Test"
-    MMD2 = np.sum(KXX) / (m*(m-1)) - 2 * np.sum(KXY) / (m * n) + np.sum(KYY) / (n*(n-1))
-    return MMD2
-
-def MMDb(X, Y, sigma):
-    # By David Rosen
-    m = X.shape[0]
-    n = Y.shape[0]
-
-    # Compute and return *squared* Euclidean distance matrices
-    XX = sklearn.metrics.pairwise_distances(X=X, Y=X, squared=True)
-    XY = sklearn.metrics.pairwise_distances(X=X, Y=Y, squared=True)
-    YY = sklearn.metrics.pairwise_distances(X=Y, Y=Y, squared=True)
-
-    # Compute kernel matrices KXX, KXY, KYY using RBF kernel with bandwidth sigma
-    KXX = np.exp(-XX / (2 * sigma ** 2))
-    KXY = np.exp(-XY / (2 * sigma ** 2))
-    KYY = np.exp(-YY / (2 * sigma ** 2))
-
-    # Compute and return the biased empirical MMD estimator MMDb defined in eq. (5) of "A Kernel Two-Sample Test"
-    return np.sqrt(np.sum(KXX) / m ** 2 - 2 * np.sum(KXY) / (m * n) + np.sum(KYY) / n ** 2)
 
 def gaussian_displacement_factor_graph_with_equal_dim(
         variables: List[Variable],

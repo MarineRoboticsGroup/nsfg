@@ -13,7 +13,6 @@ from slam.RunBatch import graph_file_parser, group_nodes_factors_incrementally
 from slam.Variables import Variable
 from utils.Visualization import plot_2d_samples
 import arviz as az
-import xarray as xr
 
 
 class GlobalSMCSampler(object):
