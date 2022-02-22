@@ -3,7 +3,7 @@ This is a collection of packages we implemented for directly drawing samples fro
 
 The following instruction was tested on Ubuntu 18.04 with Miniconda.
 
-## Requirements on Ubuntu(>=18.04)
+## Requirements on Ubuntu (>=18.04)
 ```
 sudo apt-get install gcc libc6-dev
 sudo apt-get install gfortran libgfortran3
