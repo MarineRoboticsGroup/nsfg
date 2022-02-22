@@ -16,6 +16,8 @@ git clone git@github.com:MarineRoboticsGroup/nsfg.git
 cd nsfg
 conda env create -f environment.yml
 conda activate nsfg
+pip3 install --upgrade TransportMaps
+pip3 install -r requirements.txt
 python setup.py install
 ```
 
