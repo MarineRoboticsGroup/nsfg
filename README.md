@@ -8,7 +8,7 @@ The following instruction was tested on Ubuntu 18.04 with Conda.
 sudo apt-get install gcc libc6-dev
 sudo apt-get install gfortran libgfortran3
 ```
-and we recommend to install NSFG using conda environment. The default env name in the environment.yml is nsfg.
+We recommend to install NSFG using conda environment. The default env name in the environment.yml is nsfg.
 
 ## Installation
 ```
