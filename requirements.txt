@@ -1,9 +1,0 @@
-arviz==0.8.3
-dynesty==1.1
-matplotlib==3.3.4
-numpy==1.20
-pandas==1.0.4
-pymc3==3.8
-scipy==1.4.1
-Theano==1.0.4
-TransportMaps==2.0b3
