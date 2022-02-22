@@ -3,6 +3,13 @@ This is a collection of packages we implemented for directly drawing samples fro
 
 The following instruction was tested on Ubuntu 18.04 with Conda.
 
+## Requirements on Ubuntu(>=18.04)
+```
+sudo apt-get install gcc libc6-dev
+sudo apt-get install gfortran libgfortran3
+```
+and we recommend to install NSFG using conda environment. The default env name in the environment.yml is nsfg.
+
 ## Installation
 ```
 git clone git@github.com:MarineRoboticsGroup/nsfg.git
