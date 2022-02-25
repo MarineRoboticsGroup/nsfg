@@ -8,7 +8,7 @@ setup(
     package_dir={'': 'src'},
     url='',
     license='',
-    author='Qiangqiang Huang',
-    author_email='hqq@mit.edu',
+    author='',
+    author_email='',
     description=''
 )
