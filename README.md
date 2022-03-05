@@ -7,6 +7,7 @@ The following instruction was tested on Ubuntu 18.04 with Miniconda.
 ```
 sudo apt-get install gcc libc6-dev
 sudo apt-get install gfortran libgfortran3
+sudo apt-get install libsuitesparse-dev
 ```
 We recommend to install NSFG using conda environment. The default env name in the environment.yml is nsfg.
 
