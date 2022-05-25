@@ -50,7 +50,7 @@ cd example/simulated_dataset
 source run_gtsam.sh
 ```
 ### NF-iSAM
-Please refer to the code base of [NF - iSAM](https://github.com/borglab/gtsam](https://github.com/MarineRoboticsGroup/NF-iSAM)
+Please refer to the code base of [NF-iSAM](https://github.com/MarineRoboticsGroup/NF-iSAM)
 ### Sampling importance resampling (SIR) particle filter
 We also implemented the SIR particle filter. We tested it using our factor graphs produced from the Plaza1 dataset. Run an example of the particle filter as follows:
 ```
