@@ -278,6 +278,46 @@ class StructuredJointFactorForSLAM:
         return  circ_list
 
 
+class JointFactorForParticleFilter(StructuredJointFactorForSLAM):
+    def __init__(self, factors: List[Factor], variable_pattern: List[Variable], manually_partitioned_llh_factors: List[Factor] = None):
+        """
+        This class prepares proposal samples and weight functions for particle filters.
+        """
+
+        super().__init__(factors=factors, variable_pattern=variable_pattern,
+                         manually_partitioned_llh_factors=manually_partitioned_llh_factors)
+
+    def naive_proposal(self, num_sample):
+        """
+        sampling from self.priors and self.binary_factors_with_one_unsampled_end
+        :params num_sample: int
+        :return: np.ndarray with shape (num_sample, dim)
+        """
+        x = np.zeros((num_sample, self.dim))
+        # sampling prior factors
+        for factor in self.prior_factors:
+            # u_to_sample() in GaussiianPriorFactor, Pose2PriorFactor or FlowsPriorFactor
+            x[:, self.factor_to_indices[factor]] = \
+                factor.sample(num_sample)
+        # sampling priors from likelihood factors
+        for factor in self.binary_factors_with_one_unsampled_end:
+            var1_indices = self.factor_to_indices[factor][:factor.var1.dim]
+            var2_indices = self.factor_to_indices[factor][factor.var1.dim:]
+            if self.is_var1_sampled[factor]:
+                x[:, var2_indices] = factor.sample(var1=x[:, var1_indices])
+            else:
+                x[:, var1_indices] = factor.sample(var2=x[:, var2_indices])
+        return x
+
+    def loglike(self, x):
+        """
+        :params x: samples with shape (num_sample, dim)
+        """
+        log_like = np.zeros(x.shape[0])
+        for factor in self.factors_with_all_ends_sampled:
+            log_like += factor.log_pdf(x[:, self.factor_to_indices[factor]])
+        return log_like
+
 class JointFactorForNestedSampler(StructuredJointFactorForSLAM):
     def __init__(self, factors: List[Factor], variable_pattern: List[Variable], manually_partitioned_llh_factors: List[Factor] = None):
         super().__init__(factors=factors, variable_pattern=variable_pattern,
