@@ -4,7 +4,7 @@ from sampler.NestedSampling import dynesty_run_batch
 if __name__ == '__main__':
     run_file_dir = os.path.dirname(__file__)
     # cases = ["Plaza2ADA0.6","Plaza2ADA0.4","Plaza2ADA0.2","Plaza2"]
-    for _ in range(5):
+    for _ in range(6):
         cases = ["Plaza1","Plaza1ADA0.2","Plaza1ADA0.4","Plaza1ADA0.6"]
         for case in cases:
             case_dir = os.path.join(run_file_dir,f"RangeOnlyDataset/{case}EFG")
