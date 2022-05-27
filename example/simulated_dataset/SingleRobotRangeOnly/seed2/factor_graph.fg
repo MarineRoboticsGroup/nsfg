@@ -1,0 +1,13 @@
+Variable Pose SE2 X0 40.0 40.0 0.0
+Variable Pose SE2 X1 40.0 60.0 1.5707963267948966
+Variable Pose SE2 X2 60.0 60.0 0.0
+Variable Pose SE2 X3 60.0 40.0 -1.5707963267948966
+Variable Landmark R2 L0 0 0
+Factor UnarySE2ApproximateGaussianPriorFactor X0 40.0 40.0 0.0 covariance 0.01 0.0 0.0 0.0 0.01 0.0 0.0 0.0 0.0004
+Factor SE2R2RangeGaussianLikelihoodFactor X0 L0 56.568542494923804 2
+Factor SE2RelativeGaussianLikelihoodFactor X0 X1 1.2246467991473533e-15 20.0 1.5707963267948966 covariance 0.04000000000000001 0.0 0.0 0.0 0.0016 0.0 0.0 0.0 0.0004
+Factor SE2R2RangeGaussianLikelihoodFactor X1 L0 72.11102550927978 2
+Factor SE2RelativeGaussianLikelihoodFactor X1 X2 1.2246467991473533e-15 -20.0 -1.5707963267948966 covariance 0.04000000000000001 0.0 0.0 0.0 0.0016 0.0 0.0 0.0 0.0004
+Factor SE2R2RangeGaussianLikelihoodFactor X2 L0 84.8528137423857 2
+Factor SE2RelativeGaussianLikelihoodFactor X2 X3 1.2246467991473533e-15 -20.0 -1.5707963267948966 covariance 0.04000000000000001 0.0 0.0 0.0 0.0016 0.0 0.0 0.0 0.0004
+Factor SE2R2RangeGaussianLikelihoodFactor X3 L0 72.11102550927978 2
