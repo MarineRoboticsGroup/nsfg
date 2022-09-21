@@ -1,6 +1,21 @@
 # Nested Sampling for Factor Graph (NSFG)
 This is a collection of packages we implemented for directly drawing samples from posterior distributions in SLAM problems. The posterior distributions are represented as factor graphs here. Our packages get these factor graphs ready for using sampling approaches including the No-U-Turn sampler (NUTS), sequential Monte Carlo (NUTS), and nested sampling (NS). These sampling approaches are implemented in our dependencies such as [PyMC3](https://docs.pymc.io/en/v3/) and [dynesty](https://dynesty.readthedocs.io/en/stable/).
 
+## References
+The paper describing NSFG can be found [here](https://arxiv.org/abs/2109.10871). If you found this code useful, please cite it as:
+```bibtex
+@article{huang2022nested,
+  title={Nested Sampling for Non-Gaussian Inference in SLAM Factor Graphs},
+  author={Huang, Qiangqiang and Papalia, Alan and Leonard, John J},
+  journal={IEEE Robotics and Automation Letters},
+  volume={7},
+  number={4},
+  pages={9232--9239},
+  year={2022},
+  publisher={IEEE}
+}
+```
+
 The following instructions were tested on Ubuntu 18.04 and 20.04 with Miniconda.
 
 ## Requirements on Ubuntu
